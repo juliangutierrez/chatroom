@@ -1,11 +1,13 @@
 class MessagesController < ApplicationController
+	respond_to :html, :js
+	
 	def index
 		@messages = Message.all
-		@new_message = session[:user].messages.build(message_params)
+		@new_message = User.last.messages.build
 	end
 
 	def create
-    @message = session[:user].messages.build(message_params)
+    @message = User.last.messages.build(message_params)
     @message.save
     respond_with { @message }
   end

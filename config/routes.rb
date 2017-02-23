@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
 
   get 'messages' => 'messages#index'
+  post '/messages' => 'messages#create'
 
   root 'users#index'
 end
