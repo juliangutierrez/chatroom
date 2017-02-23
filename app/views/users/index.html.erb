@@ -11,5 +11,9 @@
 
 	<%= f.label :name, class: 'label-light' %>
 	<%= f.text_field :name, class: 'form-control' %>
+
+	<%= f.label :dialect, class: 'label-light' %>
+	<%= f.select :dialect, User::YODA, USER::VALLEY, class: 'form-control' %>
+
 	<%= f.submit 'Go!', class: 'btn btn-create' %>
 <% end %>

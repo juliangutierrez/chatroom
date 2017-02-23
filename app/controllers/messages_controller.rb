@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-
+	
 	def index
 		@messages = Message.all
 		@new_message = User.find(session[:user_id]).messages.build
