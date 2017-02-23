@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
-	respond_to :html, :js
-	
+
 	def index
 		@messages = Message.all
 		@new_message = User.last.messages.build
@@ -8,8 +7,15 @@ class MessagesController < ApplicationController
 
 	def create
     @message = User.last.messages.build(message_params)
-    @message.save
-    respond_with { @message }
+
+    if @message.save
+      sync_new @message
+    end
+
+    respond_to do |format|
+      format.html { redirect_to messages_url }
+      format.json { head :no_content }
+    end
   end
 
 	private

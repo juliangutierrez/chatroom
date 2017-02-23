@@ -1,7 +1,7 @@
 <h3>Messages</h3>
 
 <%= sync partial: 'message_row', collection: @messages %>
-<%= sync_new partial: 'message_row', resource: Message.new %>
+<%= sync_new partial: 'message_row', resource: Message.new, direction: :append %>
 
 <hr>
 
