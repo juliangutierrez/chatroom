@@ -2,11 +2,11 @@ class MessagesController < ApplicationController
 
 	def index
 		@messages = Message.all
-		@new_message = User.last.messages.build
+		@new_message = User.find(session[:user_id]).messages.build
 	end
 
 	def create
-    @message = User.last.messages.build(message_params)
+    @message = User.find(session[:user_id]).messages.build(message_params)
 
     if @message.save
       sync_new @message

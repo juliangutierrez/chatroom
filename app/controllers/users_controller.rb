@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new user_params
 		if @user.save
-			session[:user] = @user
+			session[:user_id] = @user.id
 			redirect_to messages_url
 		else 
 			render :index
