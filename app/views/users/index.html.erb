@@ -14,7 +14,7 @@
 
 	<%= f.label :dialect, class: 'label-light' %>
 	<%= f.select(:dialect) do %>
-  	<% [User::YODA, User::VALLEY].each do |c| -%>
+  	<% [User::PIRATE, User::YODA, User::VALLEY].each do |c| -%>
     <%= content_tag(:option, c, value: c) %>
   <% end %>
 <% end %>	

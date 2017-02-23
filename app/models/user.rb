@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
 	has_many :messages
 
+	PIRATE = 'pirate'
 	YODA = 'yoda'
 	VALLEY = 'valley'
 end
