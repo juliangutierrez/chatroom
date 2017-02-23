@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
-	include TranslatorApi
+	require 'translator_api'
 
   belongs_to :user
 
