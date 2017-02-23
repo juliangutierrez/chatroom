@@ -1,7 +1,22 @@
-<h3>Messages</h3>
+<div class='pull-left'>
+	<h3>Messages</h3>
 
-<%= sync partial: 'message_row', collection: @messages %>
-<%= sync_new partial: 'message_row', resource: Message.new, direction: :append %>
+	<%= sync partial: 'message_row', collection: @messages %>
+	<%= sync_new partial: 'message_row', resource: Message.new, direction: :append %>
+</div>
+
+<div class='pull-right'>
+	<h3>Users</h3>
+	<ul>
+	<% User.all.each do |user| %>
+		<li>
+			<%= user.name %>
+		</li>
+	<% end %>
+	</ul>
+</div>
+
+<div class='clearfix'></div>
 
 <hr>
 
