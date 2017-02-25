@@ -1,25 +1,26 @@
-<div class='pull-left'>
-	<h3>Messages</h3>
+<div class="container">
+	<div class='pull-left'>
+		<h3>Messages</h3>
 
-	<%= sync partial: 'message_row', collection: @messages %>
-	<%= sync_new partial: 'message_row', resource: Message.new, direction: :append %>
-</div>
+		<%= sync partial: 'message_row', collection: @messages %>
+		<%= sync_new partial: 'message_row', resource: Message.new, direction: :append %>
+	</div>
 
-<div class='pull-right'>
-	<h3>Users</h3>
-	<ul>
-	<% User.all.each do |user| %>
-		<li>
-			<%= user.name %>
-		</li>
+	<div class='pull-right'>
+		<h3>Users</h3>
+		<ul>
+		<% User.all.each do |user| %>
+			<%= content_tag :li, user.name if user.active? %>
+		<% end %>
+		</ul>
+	</div>
+
+	<div class='clearfix'></div>
+
+	<hr>
+
+	<%= form_for @new_message, remote: true do |f| %>
+	  <%= f.text_field :content %>
+	  <%= link_to 'Log out', users_end_session_path, class: 'btn btn-default' %>
 	<% end %>
-	</ul>
 </div>
-
-<div class='clearfix'></div>
-
-<hr>
-
-<%= form_for @new_message, remote: true do |f| %>
-  <%= f.text_field :content %>
-<% end %>

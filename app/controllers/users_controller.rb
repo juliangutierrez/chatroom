@@ -14,6 +14,12 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def end_session
+		User.find(session[:user_id]).update active: false
+		session.delete :user_id
+		redirect_to index
+	end
+
 	def user_params
     params.require(:user).permit(:name, :dialect)
   end
