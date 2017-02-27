@@ -5,6 +5,17 @@ class Message < ApplicationRecord
 
   before_save :translate_content
 
+  def icon
+  	case self.user.dialect
+  		when User::YODA
+  			return 'fighter-jet'
+  		when User::VALLEY
+  			return 'shopping-bag'
+  		when User::PIRATE
+  			return 'flag'
+		end		
+  end
+
   def translate_content
   	if self.user.dialect == User::PIRATE
   		self.content = TranslatorApi.translate_pirate content
